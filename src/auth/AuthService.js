@@ -57,7 +57,7 @@ export default class AuthService {
     localStorage.removeItem('expires_at')
     this.userProfile = null
     this.authNotifier.emit('authChange', false)
-    window.location.replace(`https://wildercommunity.eu.auth0.com/v2/logout?returnTo=http%3A%2F%2Flocalhost%3A8080&client_id=${AUTH_CONFIG.clientId}`)
+    window.location.replace(`https://wildercommunity.eu.auth0.com/v2/logout?returnTo=${encodeURIComponent(process.env.VUE_APP_REDIRECT_URL)}&client_id=${AUTH_CONFIG.clientId}`)
     // navigate to the home route
     router.replace('home')
   }
